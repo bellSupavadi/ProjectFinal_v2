@@ -68,9 +68,12 @@
         <li class="nav-item">
           <a class="nav-link" href="about.html">ABOUT</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" onclick="logout()">LOGOUT</a>
+        </li>
       </ul>
       <a class="btn btn-outline-success my-2 my-sm-0" href="shopowner.html">SHOP</a>
+      
     </div>
   </nav>
   <section class="container-fluid_main2">
@@ -256,5 +259,15 @@ console.log(getDistanceFromLatLonInKm(18.3170581,99.3986862,18.3170581,99.397686
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
+
+function logout(){
+  localStorage.clear()
+    firebase.auth().signOut().then(function() {
+        window.location.href='index.html'
+     
+}).catch(function(error) {
+// An error happened.
+});
+ }
 </script>
 </html>
