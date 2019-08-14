@@ -1,0 +1,130 @@
+.checkmark {
+    width: 200px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  
+  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    animation: dash 2s ease-in-out;
+    -webkit-animation: dash 2s ease-in-out;
+  }
+  
+  .spin {
+    animation: spin 2s;
+    -webkit-animation: spin 2s;
+    transform-origin: 50% 50%;
+    -webkit-transform-origin: 50% 50%;
+  }
+  
+  p {
+    font-family: sans-serif;
+    color: pink;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px auto;
+    text-align: center;
+    animation: text .5s linear .4s;
+    -webkit-animation: text .4s linear .3s;
+  }
+  
+  @-webkit-keyframes dash {
+   0% {
+     stroke-dashoffset: 1000;
+   }
+   100% {
+     stroke-dashoffset: 0;
+   }
+  }
+  
+  @keyframes dash {
+   0% {
+     stroke-dashoffset: 1000;
+   }
+   100% {
+     stroke-dashoffset: 0;
+   }
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @-webkit-keyframes text {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1;
+    }
+  }
+    
+    @keyframes text {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1;
+    }
+  }
+  .cross__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+    stroke: red;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  
+  .cross {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: red;
+    stroke-miterlimit: 10;
+   
+    
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+  
+  .cross__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(1, 1, 1, 1) 0.8s forwards;
+  }
+  
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes scale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 30px #fff;
+    }
+  }

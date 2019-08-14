@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+  <script>
+        // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+    authDomain: "testproject-f89be.firebaseapp.com",
+    databaseURL: "https://testproject-f89be.firebaseio.com",
+    projectId: "testproject-f89be",
+    storageBucket: "testproject-f89be.appspot.com",
+    messagingSenderId: "282046642874",
+    appId: "1:282046642874:web:c4de5e6851594a6b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+ 
+    </script>
+<body>
+      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+          <a class="navbar-brand" href="#">
+              <img src="photo/MFR.png" style="width:50px;">
+            </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">RENT</a>
+                  </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#one">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="logout()">LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section class="container-fluid">
+          <!-- <div class="bg-image"> -->
+         <!-- <div class="bg-text"> -->
+             <h1>MOTERCYCLE FOR RENT</h1>
+              <p>" Once a year,go see someplace you'd never been before "</p>    
+              <a href="" class="button" data-toggle="modal" data-target="#elegantModalForm">Rent Now!</a>
+             
+            <!-- </div> -->
+      </section>
+      <!-- Modal -->
+      <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content form-elegant">
+          <!--Header-->
+          <div class="modal-header text-center">
+          
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            
+          </div>
+          <!--Body-->
+          <div class="modal-body mx-4">
+            <!--Body-->
+            <div id="login" >
+              <div class="card mx-auto border-0" >
+                <div class="card-header border-bottom-0 bg-transparent">
+                  <ul class="nav nav-tabs justify-content-center " id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active text-primary" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login"
+                         aria-selected="true">Login</a>
+                    </li>
+            
+                    <li class="nav-item">
+                      <a class="nav-link text-primary" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register"
+                         aria-selected="false">Register</a>
+                    </li>
+                  </ul>
+                </div>
+            
+                <div class="card-body pb-4">
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                     
+                        <div class="form-group">
+                          <input type="email" name="email" class="form-control" id="email" placeholder="Email" required autofocus>
+                        </div>
+            
+                        <div class="form-group">
+                          <input type="password" name="password" class="form-control" id="password" id="password" placeholder="Password" required>
+                        </div>
+            
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" id="customCheck1" checked="" type="checkbox">
+                          <label class="custom-control-label" for="customCheck1">Check me out</label>
+                        </div>
+            
+                        <div class="text-center pt-4">
+                          <button type=""  onclick="login()" class="btn btn-primary">Login</button>
+                        </div>
+            
+                        <div class="text-center pt-2">
+                          <a class="btn btn-link text-primary" href="#">Forgot Your Password?</a>
+                        </div>
+                   
+                    </div>
+            
+                    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
+                      
+                        <div class="form-group">
+                          <input type="text" name="name" id="name" class="form-control" placeholder="Firstname" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname" required autofocus>
+                          </div>
+                        <div class="form-group">
+                          <input type="email" name="email2" id="email2" class="form-control" placeholder="Email" required>
+                        </div>
+            
+                        <div class="form-group">
+                          <input type="password" name="password2" id="password2" class="form-control" placeholder="Set a password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="phone" id="phone" class="form-control" placeholder="Phone" required autofocus>
+                          </div>
+            
+                        <!-- <div class="form-group">
+                          <input type="password" name="password_confirmation" id="password-confirm" class="form-control" placeholder="Confirm password" required>
+                        </div> -->
+            
+                        <div class="text-center pt-2 pb-1">
+                          <button type="" onclick="register()" class="btn btn-primary">Register</button>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <br>
+         
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
+  </body>
+<script>
+  // var userid
+  // console.log(userid);
+  
+  function register() {
+    var email1 = document.getElementById('email2').value;
+  var password = document.getElementById('password2').value;
+  firebase.auth().createUserWithEmailAndPassword(email1, password).catch(function(error) {
+    console.log("come on");
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+ // ons.notification.alert(errorCode+':'+errorMessage);
+
+});
+// sendmail()
+//console.log(userid);
+
+
+
+}
+
+
+var login = function() {
+  
+  
+  var username = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(error.code+':'+error.message);
+  ons.notification.alert('login failed');
+  
+  // ...
+});
+
+};
+ firebase.auth().onAuthStateChanged(function(user) {
+if(user){
+  userid=user.uid;
+  console.log(user.emailVerified);
+  
+  if(user.emailVerified==false){
+    // alert("Confirm Email")
+    registerfirebase(user.uid)
+  
+  
+  
+  }
+  else if(user.emailVerified==true){
+    localStorage.setItem("id", user.uid);
+    localStorage.setItem("mail", user.email);
+    window.location.href='shop.html'
+  }
+}
+
+});
+function sendmail() {
+  var user = firebase.auth().currentUser;
+
+user.sendEmailVerification().then(function() {
+  // Email sent.
+  alert("Confirm Email");
+}).catch(function(error) {
+  // An error happened.
+});
+
+}
+
+
+function logout(){
+  localStorage.clear()
+    firebase.auth().signOut().then(function() {
+        window.location.href='index.html'
+     
+}).catch(function(error) {
+// An error happened.
+});
+ }
+function registerfirebase(id) {
+ 
+  var name = document.getElementById('name').value;
+  var lastname = document.getElementById('lastname').value;
+  var phone = document.getElementById('phone').value;
+  console.log(name,lastname,phone,id);
+  
+  if(name!=""){
+    sendmail()
+  db.collection("datatest").add({
+    name: name,
+    surname: lastname,
+    UID:id,
+    phone:phone,
+    count:0
+  })
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+    logout()
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
+}
+</script>
+  </html>

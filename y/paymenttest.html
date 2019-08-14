@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <!-- <script src="script.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="check.css">
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+  <script>
+        // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+    authDomain: "testproject-f89be.firebaseapp.com",
+    databaseURL: "https://testproject-f89be.firebaseio.com",
+    projectId: "testproject-f89be",
+    storageBucket: "testproject-f89be.appspot.com",
+    messagingSenderId: "282046642874",
+    appId: "1:282046642874:web:c4de5e6851594a6b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+ 
+    </script>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="index.html">
+            <img src="photo/MFR.png" style="width:50px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">RENT</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SHOP</button>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 50px;">
+
+        <div class="form-group">
+            <label for="">Card Number</label>
+            <input type="password" class="form-control" name="" id="numcard" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="">Name on Card</label>
+            <input type="text" class="form-control" name="" id="namecard" aria-describedby="helpId"
+                placeholder="Full Name">
+            <br>
+        </div>
+        <label for="">Expiry</label>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" name="" id="mm" placeholder="MM">
+                        <option value="">MM</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+
+                    <select class="form-control" name="" id="yyy" placeholder="YYY">
+                        <option value="">YYYY</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">Card Number</label>
+            <input type="number" class="form-control" name="" id="securitycode" aria-describedby="helpId"
+                placeholder="123">
+        </div>
+        <br>
+        <br>
+        <a class="btn btn-outline-danger" onclick="checkbikeagain()">
+            Payment</a>
+    </div>
+
+    </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mx-4">
+                    <!-- Body-->
+                    <div class="checkmark">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 161.2 161.2" enable-background="new 0 0 161.2 161.2" xml:space="preserve">
+      <path class="path" fill="none" stroke="#73AF55" stroke-miterlimit="10" d="M425.9,52.1L425.9,52.1c-2.2-2.6-6-2.6-8.3-0.1l-42.7,46.2l-14.3-16.4
+          c-2.3-2.7-6.2-2.7-8.6-0.1c-1.9,2.1-2,5.6-0.1,7.7l17.6,20.3c0.2,0.3,0.4,0.6,0.6,0.9c1.8,2,4.4,2.5,6.6,1.4c0.7-0.3,1.4-0.8,2-1.5
+          c0.3-0.3,0.5-0.6,0.7-0.9l46.3-50.1C427.7,57.5,427.7,54.2,425.9,52.1z"/>
+      <circle class="path" fill="none" stroke="#73AF55" stroke-width="4" stroke-miterlimit="10" cx="80.6" cy="80.6" r="62.1"/>
+      <polyline class="path" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="113,52.8 
+          74.1,108.4 48.2,86.4 "/>
+      
+     
+      
+      </svg>
+        
+    
+      </div>
+
+
+                    <center>
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+                            <strong>จ่ายเงินเรียบร้อย</strong></h3>
+                    </center>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cross" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="model-body mx-4">
+              <div class="checkmark">
+                    <svg class="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="cross__circle" cx="26" cy="26" r="26" fill="none" />
+                        <path class="cross__check" fill="none" d="M16 16 36 36 M36 16 16 36" />
+                    </svg>
+</div>
+
+                    <center>
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+                            <strong>จ่ายเงินไม่เรียบร้อย</strong></h3>
+                    </center>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdn.omise.co/omise.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script>
+        var now = new Date();
+// var dd = String(today.getDate()).padStart(2, '0');
+// var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+// var yyyy = today.getFullYear();
+
+// today = mm + '/' + dd + '/' + yyyy;
+var today = now.toISOString(); 
+        console.log(today);
+        
+       var personbook = localStorage.getItem('personbook');
+                    var bookbike = localStorage.getItem('bookbike');
+                    var personbookobject =JSON.parse(personbook);
+                    var bookbikeobject =JSON.parse(bookbike);
+                    var uid =localStorage.getItem("id"); 
+                    var check = true;
+        function payment() {
+            (function () {
+
+                'use strict';
+
+                Omise.setPublicKey('pkey_test_5g5jh4dea9306ziba2u');
+
+                // var checkoutForm = document.getElementById('checkout-form')
+
+                // checkoutForm.addEventListener('submit', submitHandler, false);
+
+                // Submit handler for checkout form.
+                // function submitHandler(event) {
+                //   event.preventDefault();
+
+                /*
+                NOTE: Using `data-name` to prevent sending credit card information fields to the backend server via HTTP Post
+                (according to the security best practice https://www.omise.co/security-best-practices#never-send-card-data-through-your-servers).
+                */
+                var cardInformation = {
+                    name: document.getElementById("namecard").value,
+                    number: document.getElementById("numcard").value,
+                    expiration_month: document.getElementById("mm").value,
+                    expiration_year: document.getElementById("yyy").value,
+                    security_code: document.getElementById("securitycode").value
+                };
+                console.log(cardInformation);
+
+                Omise.createToken('card', cardInformation, function (statusCode, response) {
+                    if (statusCode === 200) {
+                        // Success: send back the TOKEN_ID to your server. The TOKEN_ID can be
+                        // found in `response.id`.
+                        //   checkoutForm.omiseToken.value = response.id;
+                        //   console.log(response.id);
+                        omise(response.id)
+                        //   localStorage.setItem("y",response.id);
+                        //   checkoutForm.submit();
+                    }
+                    else {
+                        $("#cross").modal();
+                        storebike=[]
+                        // Error: display an error message. Note that `response.message` contains
+                        // a preformatted error message. Also note that `response.code` will be
+                        // "invalid_card" in case of validation error on the card.
+                    }
+                });
+                // }
+
+            })();
+        }
+        function omise(token) {
+            if (check==true) {
+                
+           
+            $.ajax({
+                type: "POST",
+                url: "https://fierce-fortress-50416.herokuapp.com/omise",
+                data: '{"item":"' + token + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $("#elegantModalForm").modal();
+
+db.collection("datatest").where("UID","==",uid).get()
+                .then(function (querySnapshot) {
+                    // doc.data() is never undefined for query doc snapshots
+                    querySnapshot.docs.forEach(function(data) {
+                        console.log(data.id);
+                        
+                    db.collection("datatest").doc(data.id).update({ 
+    count: querySnapshot.docs[0].data().count+1
+});
+}); 
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+
+
+                    db.collection("book").add({
+    name: personbookobject.name,
+    surname: personbookobject.surname,
+    phon:personbookobject.phone,
+    mail:personbookobject.mail,
+    startdate:personbookobject.start,
+    enddate:personbookobject.end,
+    price:personbookobject.price,
+    UID:uid,
+    brand:bookbikeobject.brand,
+    color:bookbikeobject.color,
+    type:bookbikeobject.type,
+    shopid:bookbikeobject.shopid,
+    book:today
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+    storebike=[]
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+
+
+
+                    // localStorage.clear();
+                },
+                error: function (data) {
+                    $("#cross").modal();
+                    storebike=[]
+                }
+            });
+        }else{
+            alert("จ่ายไม่สำเร็จ")
+        }
+
+
+        }
+
+
+
+
+
+
+        var storebike = [];
+      // });
+    //   var shopid = localStorage.getItem("shopid");
+    //   console.log(shopid);
+
+    //   var start = localStorage.getItem("start");
+    //   var end = localStorage.getItem("end");
+      
+    //   console.log(start, end);
+function checkbikeagain() {
+    
+
+      db.collection("bike").where("shopid", "==", bookbikeobject.shopid).where("brand", "==", bookbikeobject.brand).where("type", "==", bookbikeobject.type).where("color", "==", bookbikeobject.color).get()
+        .then(function (querySnapshot) {
+
+          // doc.data() is never undefined for query doc snapshots
+          querySnapshot.docs.forEach(function (cliak) {
+            storebike.push(cliak.data());
+            console.log(storebike);
+
+
+
+            //console.log(check);
+            //                          console.log(check);
+            // console.log(checcknum);
+          });
+          test()
+        })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
+        });
+
+     
+
+
+
+
+
+
+
+
+
+
+
+      function test() {
+console.log("tong");
+        var date1 = new Date(personbookobject.start)
+        var date2 = new Date(personbookobject.end)
+
+        storebike.forEach(function (data) {
+
+          var checcknum = 0
+          console.log(data.type);
+
+
+          db.collection("book").where("shopid", "==", data.shopid).where("brand", "==", data.brand).where("type", "==", data.type).where("color", "==", data.color).get()
+            .then(function (querySnapshot) {
+
+
+
+
+
+              querySnapshot.docs.forEach(function (cliak) {
+                var minDate = new Date(cliak.data().startdate);
+                var maxDate = new Date(cliak.data().enddate);
+                console.log("d", cliak.data().startdate,date1);
+
+                if (minDate <= date2 && minDate >= date1 || maxDate <= date1 && maxDate >= date2 && minDate <= date1 && minDate >= date2 || maxDate <= date2 && maxDate >= date1) {
+
+
+
+
+                  checcknum = checcknum + 1
+                  //    if(checcknum<=data.count){  
+
+                  //  }else{
+
+                  //     check=false;
+
+                  //  }
+
+
+                }
+                else {
+                  console.log(' not  rent');
+                }
+
+
+                //console.log(check);
+                //                          console.log(check);
+                // console.log(checcknum);
+              });
+              // test2()
+              console.log(checcknum);
+
+
+              test2(data, checcknum)
+            })
+            .catch(function (error) {
+              console.log("Error getting documents: ", error);
+            });
+        });
+      }
+
+      function test2(data, checcknum) {
+        
+        if (checcknum < data.count) {
+            check = true;
+          console.log(data, check);
+       payment()
+        } else {
+
+          check = false;
+          console.log(data, check);
+        }
+
+
+      }
+    }
+    </script>
+
+</body>
+
+</html>

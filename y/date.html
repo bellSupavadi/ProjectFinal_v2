@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+<script>
+      // Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+  authDomain: "testproject-f89be.firebaseapp.com",
+  databaseURL: "https://testproject-f89be.firebaseio.com",
+  projectId: "testproject-f89be",
+  storageBucket: "testproject-f89be.appspot.com",
+  messagingSenderId: "282046642874",
+  appId: "1:282046642874:web:c4de5e6851594a6b"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+  </script>
+<body>
+    
+</body>
+<script>
+//     var getDates = function(startDate, endDate) {
+//   var dates = [],
+//       currentDate = startDate,
+//       addDays = function(days) {
+//         var date = new Date(this.valueOf());
+//         date.setDate(date.getDate() + days);
+//         return date;
+//       };
+//   while (currentDate <= endDate) {
+//     dates.push(currentDate);
+//     currentDate = addDays.call(currentDate, 1);
+//   }
+//   return dates;
+// };
+
+// Usage
+
+var num =2;//สมมุติเป็นจำนวนรถ
+
+// var dates = getDates(new Date('2013,11,22'), new Date('2013,11,30'));                                                                                                           
+// dates.forEach(function(date) {
+//   console.log(date);
+  
+  var storebike=[];             
+// });
+
+
+  db.collection("bike").get()
+                .then(function (querySnapshot) {
+                    
+                    // doc.data() is never undefined for query doc snapshots
+                    querySnapshot.docs.forEach(function(cliak) {
+                      storebike.push(cliak.data());
+                         console.log(storebike);
+                         
+                       
+      
+                         //console.log(check);
+//                          console.log(check);
+// console.log(checcknum);
+                 });
+                 test()
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function test() {
+  
+var date1=new Date('08/16/2019')
+var date2=new Date('08/20/2019')
+
+storebike.forEach(function (data) {
+  
+var checcknum = 0
+console.log(data.type);
+
+
+  db.collection("book").where("brand", "==", data.brand).where("type", "==", data.type).where("color", "==", data.color).get()
+                .then(function (querySnapshot) {
+                    
+                 
+                   
+               
+                    querySnapshot.docs.forEach(function(cliak) {
+                        var minDate = new Date(cliak.data().startdate);
+                         var maxDate =  new Date(cliak.data().enddate);
+                         console.log("d",cliak.data());
+                         
+                         if (minDate <= date2 && minDate >= date1 || maxDate <= date1 && maxDate >= date2&&minDate <= date1 && minDate >= date2 || maxDate <= date2 && maxDate >= date1) {
+                             
+
+                                 
+                                 checcknum=checcknum+1
+                            //    if(checcknum<=data.count){  
+
+                            //  }else{
+                               
+                            //     check=false;
+                                
+                            //  }
+        
+        
+    }
+    else{     
+        console.log(' not  rent');
+}
+                      
+      
+                         //console.log(check);
+//                          console.log(check);
+// console.log(checcknum);
+                 });  
+                 // test2()
+                 console.log(checcknum);
+                 
+
+                  test2(data,checcknum)
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+              });
+              }
+              function test2(data,checcknum) {
+                var check = true;
+                 if(checcknum<data.count){  
+                  console.log(data,check);
+}else{
+  
+   check=false;
+   console.log(data,check);
+}
+                
+                
+              }
+</script>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/intlTelInput.css"> -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    
+    
+    <script src="zoom-img.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+  <script>
+        // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+    authDomain: "testproject-f89be.firebaseapp.com",
+    databaseURL: "https://testproject-f89be.firebaseio.com",
+    projectId: "testproject-f89be",
+    storageBucket: "testproject-f89be.appspot.com",
+    messagingSenderId: "282046642874",
+    appId: "1:282046642874:web:c4de5e6851594a6b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+ 
+    </script>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="home.html">
+            <img src="photo/MFR.png" style="width:50px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">RENT</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SHOP</button>
+        </div>
+    </nav>
+
+    </div>
+  
+<br><br><br>
+    <div class="container-fluid_detail">
+        
+        <center><p>รายละเอียดการจองรถ</p></center>
+        <hr>
+        <img src="photo/mocy2.jpeg" alt="" srcset="" class="mx-auto d-block" style="width:50%">
+         
+           <hr>
+           <center><p>รายละเอียดการเช่ารถ</p></center>
+           <br>
+           <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+          <label for="">เวลาจอง</label>
+          <input type="text"
+            class="form-control" name="" id="start" aria-describedby="helpId" placeholder="" disabled>
+         </div>
+         <div class="col-sm-6">
+                 <label for="">ถึง</label>
+                 <input type="text"
+                   class="form-control" name="" id="end" aria-describedby="helpId" placeholder=""disabled>
+                </div>
+         </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+<p id="priceofrent"></p>
+            </div>
+            <div class="col-sm-6">
+     <p id="price"></p>           
+            </div>
+        </div>
+        <br>
+        <center><p>รายละเอียดของผู้ขับรถ</p></center>
+           <div class="form-group">
+               <div class="row">
+                   <div class="col-sm-6">
+             <label for="">ชื่อจริง</label>
+             <input type="text"
+               class="form-control" name="" id="name" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="col-sm-6">
+                    <label for="">นามสกุล</label>
+                    <input type="text"
+                      class="form-control" name="" id="surname" aria-describedby="helpId" placeholder="">
+                   </div>
+            </div>
+           </div>
+           <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="">เบอร์โทรติดต่อ</label>
+                        <input type="text"
+                          class="form-control" name="" id="phone" aria-describedby="helpId" placeholder="">
+                       </div>
+             
+             <div class="col-sm-6">
+                     <label for="">Email</label>
+                     <input type="email"
+                       class="form-control" name="" id="mail" aria-describedby="helpId" placeholder="">
+                    </div>
+             </div>
+            </div>
+            <div class="form-check">
+                    <input type="checkbox" onclick="namenow()" class="form-check-input" id="materialUnchecked">
+                    <label class="form-check-label" for="materialUnchecked">ใช้ชื่อปัจจุบัน</label>
+                </div>
+<a  onclick="sendtopayment()" class="btn btn-outline-danger stretched-link">จองเลย</a>
+
+                </div>
+            </div>
+</div>
+<br><br><br><br>
+    <section id="credit">
+        <p>Motorcycle For Rent</p>
+    </section>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="js/intlTelInput.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+   
+    <script>
+
+var uid =localStorage.getItem("id");
+var mail =localStorage.getItem("mail");
+            /* Initiate Magnify Function
+            with the id of the image, and the strength of the magnifier glass:*/
+            // magnify("myimage", 3);
+// tel
+// var input = document.querySelector("#phone");
+//   window.intlTelInput(input);
+// $('#phone').intlTelInput();
+
+//           
+var start =localStorage.getItem("start");
+var end =localStorage.getItem("end");
+var bikedetail = localStorage.getItem('bikedetail');
+var bikedetailobject=JSON.parse(bikedetail);
+console.log(bikedetailobject);
+
+document.getElementById("start").value = start;
+document.getElementById('end').value=end;
+var oneDay = 24*60*60*1000;
+var firstDate = new Date(start);
+var secondDate = new Date(end);
+var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+console.log(bikedetailobject.price*diffDays);
+document.getElementById('priceofrent').innerHTML="ค่าเช่ารถ ("+bikedetailobject.price+" *"+ diffDays+")"
+document.getElementById('price').innerHTML="THB "+bikedetailobject.price* diffDays
+function sendtopayment() {
+    var name =document.getElementById("name").value;
+    var surname =document.getElementById("surname").value;
+    var phone =document.getElementById("phone").value;
+    var mail =document.getElementById("mail").value;
+
+    var personbook = { 'name': name, 'surname': surname, 'phone': phone, 'mail': mail, 'start': start, 'end': end,'price':bikedetailobject.price* diffDays };
+    
+    localStorage.setItem('personbook', JSON.stringify(personbook));
+    localStorage.setItem('bookbike', JSON.stringify(bikedetailobject));
+    window.location.href='paymenttest.html'
+    
+}
+var userorigin=false
+function namenow() {
+    if(userorigin==false){
+    console.log("tong");
+    
+    db.collection("datatest").where('UID','==',uid).get()
+                .then(function (querySnapshot) {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(querySnapshot.docs[0].data().name,mail);
+                    
+                    querySnapshot.docs.forEach(function (data) {
+                        
+                   
+                    document.getElementById("name").value=data.data().name;
+    document.getElementById("surname").value=data.data().surname;
+    document.getElementById("phone").value=data.data().phone;
+    document.getElementById("mail").value=mail;
+                  //  console.log(html);
+                  userorigin=true
+               });     
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+            }else{
+                userorigin=false
+                document.getElementById("name").value="";
+    document.getElementById("surname").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("mail").value="";
+
+            }
+}
+  </script>
+</body>
+
+</html>

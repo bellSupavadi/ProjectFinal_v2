@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+#map{
+  height:100vh;
+  
+}@-webkit-keyframes mymove {
+  50% {box-shadow: 0 0 100px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253);}
+}
+
+@keyframes mymove {
+  50% {box-shadow: 0 0 100px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253),0 0 10px rgb(113, 167, 253);}
+}
+  </style>
+<body onload="init();">
+
+  <button onclick="getLocation()">Try It</button>
+  <div id="map"></div>
+ <div id="distance"></div>
+  <p id="demo"></p>
+</body>
+<script src="https://api.longdo.com/map/?key=05610531170e01a24921e7ec98dd547f"></script>
+<!-- <script src="https://mmmap15.longdo.com/mmroute/json/route/guide?flon=100.426157&flat=13.686867&tlon=100.457989&tlat=13.712259&mode=t&type=25&locale=en&key=05610531170e01a24921e7ec98dd547f"></script> -->
+<script type="text/javascript" src="https://mmmap15.longdo.com/mmmap/mmmap.php?key=05610531170e01a24921e7ec98dd547f"></script>
+<script type="text/javascript" src="https://mmmap15.longdo.com/mmroute/mmroute.jsp?key=05610531170e01a24921e7ec98dd547f"></script>
+<script>
+
+  var x = document.getElementById("demo");
+
+//--------------------------------------------------------------------------------------------
+//get locating w3c
+
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(showPosition, showError);
+  //   } else {
+  //     x.innerHTML = "Geolocation is not supported by this browser.";
+  //   }
+  // }
+
+  // function showPosition(position) {
+  //   result='{ "lon" :'+ position.coords.longitude+', "lat"  : '+position.coords.latitude+'}';
+  //   console.log(result);
+    
+  //   x.innerHTML = "Latitude: " + position.coords.latitude +
+  //     "<br>Longitude: " + position.coords.longitude;
+  // }
+
+  // function showError(error) {
+  //   switch (error.code) {
+  //     case error.PERMISSION_DENIED:
+  //       x.innerHTML = "User denied the request for Geolocation."
+  //       break;
+  //     case error.POSITION_UNAVAILABLE:
+  //       x.innerHTML = "Location information is unavailable."
+  //       break;
+  //     case error.TIMEOUT:
+  //       x.innerHTML = "The request to get user location timed out."
+  //       break;
+  //     case error.UNKNOWN_ERROR:
+  //       x.innerHTML = "An unknown error occurred."
+  //       break;
+  //   }
+  // }
+
+
+
+  function init() {
+    map = new longdo.Map({
+      placeholder: document.getElementById('map'),
+      language: 'th',
+  ui: longdo.UiComponent.Mobile
+
+    });
+
+//     var marker2 = new longdo.Marker({ lon: 101.2, lat: 12.8 },
+// {
+//   title: 'Marker',
+//   icon: {
+//     url: 'https://map.longdo.com/mmmap/images/pin_mark.png',
+//     offset: { x: 12, y: 45 }
+//   },
+//   detail: 'Drag me',
+//   visibleRange: { min: 7, max: 9 },
+//   draggable: true,
+//   weight: longdo.OverlayWeight.Top,
+// });
+// map.Overlays.add(marker2);
+    // var result =  map.location(longdo.LocationMode.Geolocation);
+//     var f =map.location(longdo.LocationMode.Geolocation);
+// console.log(f);
+// var result=null;
+// map.zoomRange({ min:20, max:20 });
+
+ }
+
+    if (navigator.geolocation) {
+        var ontp ={enableHighAccuracy:true,
+                    timeout:Infinity,
+                    maximumAge:0}
+      var watchID=navigator.geolocation.watchPosition(showPosition, showError,ontp);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+ 
+  function showPosition(position) {
+    resulttest='{ "lon" :'+ position.coords.longitude+', "lat"  : '+position.coords.latitude+'}';
+    var result = JSON.parse(resulttest)
+    // console.log(result.lon);
+    
+    // x.innerHTML = "Latitude: " + position.coords.latitude +
+    //   "<br>Longitude: " + position.coords.longitude;
+
+map.location({ lon:result.lon, lat:result.lat }, true);
+
+// map.Event.bind('overlayClick', function (overlay) {
+//   if (overlay == marker1) {
+//     alert(overlay.message);
+
+//   }
+// });
+// var marker1 = new longdo.Marker({ lon: 98.355133, lat: 7.900226 });
+// marker1.message = 'Click me';
+//  map.Overlays.add(marker1);
+//maker.move(result, true)
+//----------------------------------------------------------------------------------------------------
+// map.location(longdo.LocationMode.Geolocation);//หาระยะทาง
+// var Marker1 = { lat: 7.9001728, lon: 98.3553537 };
+// var Marker2 = { lat: 7.9001999, lon: 98.3553537 };
+
+// var distance = longdo.Util.distance([Marker1, Marker2]);
+// console.log(distance); 
+//----------------------------------------------------------------------------------------------------
+//   mmroute.init(null, document.getElementById('mmrouteDiv'));
+//           mmroute.setAutoSearch(false);
+//           mmroute.setSearchMode('cb');
+//           mmroute.addDestination(7.9001728, 98.3553537);
+//           mmroute.addDestination(7.9001999, 99.3553537);
+//           mmroute.searchRoute();
+//
+// console.log(result);
+map.Event.bind('overlayClick', function(overlay) {
+  if (overlay == marker1) {
+    alert(overlay.message);
+  }
+});
+var marker3 = new longdo.Marker(result,
+{
+  title: 'Custom marker',
+  icon: {
+    html: '<em><i  class="fa fa-circle-thin" aria-hidden="true" style="font-size:10px;color:#3578E5; background-color: #3578E5; border: 2px solid white;border-radius: 50%;animation: mymove 5s infinite;"></i></em>',
+    offset: { x: 18, y: 21 }
+  },
+  popup: {
+    html: '<div style="background: #eeeeff;">popup</div>'
+  }
+});
+// map.Overlays.add(marker2);
+
+var marker1 = new longdo.Marker({ lon: 98.3553537, lat: 7.9002728 });
+
+map.Route.clear();
+map.Event.bind('guideComplete', function(overlay) {
+  document.getElementById('distance').innerHTML = map.Route.distance(true);
+});
+map.Route.enableContextMenu();
+map.Route.auto(true);
+map.Route.add(marker3);
+map.Route.add(marker1);
+
+map.Route.search();
+
+//------------------------------------------------------
+//get location longdo
+//------------------------------------------------------------------------------------------
+// map.Event.bind('location', function() {
+// var location = map.location();
+// console.log('Move: ' + location.lon + ', ' + location.lat);
+
+// });
+
+
+
+  }
+
+//--------------------------------------------------------------------------------------------------------------------------------
+   
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        x.innerHTML = "User denied the request for Geolocation."
+        break;
+      case error.POSITION_UNAVAILABLE:
+        x.innerHTML = "Location information is unavailable."
+        break;
+      case error.TIMEOUT:
+        x.innerHTML = "The request to get user location timed out."
+        break;
+      case error.UNKNOWN_ERROR:
+        x.innerHTML = "An unknown error occurred."
+        break;
+    }
+  }
+//   function tr(){
+//   map.location(longdo.LocationMode.Geolocation);
+// }
+
+
+</script>
+
+</html>

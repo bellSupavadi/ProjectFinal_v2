@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" rel="stylesheet" />
+</head>
+<style>html, body, #app {
+        height: 100%;
+        margin: 0;
+      }</style>
+<body>
+    	
+
+	<div id="app">
+            <l-map ref="map" :zoom="zoom" :center="center">
+              <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+              <l-marker :lat-lng="marker"></l-marker>
+              </l-map>
+          </div> 
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+<script src="https://unpkg.com/vue2-leaflet@1.0.1/dist/vue2-leaflet.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+
+<script>
+    var config = {
+    apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+    authDomain: "testproject-f89be.firebaseapp.com",
+    databaseURL: "https://testproject-f89be.firebaseio.com",
+    projectId: "testproject-f89be",
+    storageBucket: "testproject-f89be.appspot.com",
+    messagingSenderId: "282046642874"
+};
+var db = firebase.initializeApp(config).database();
+var { LMap, LTileLayer, LMarker } = Vue2Leaflet;
+var userRefs = db.ref('users')
+new Vue({
+  el: '#app',
+  components: { LMap, LTileLayer, LMarker },
+  data() {
+    return {
+      myUuid : localStorage.getItem('myUuid'),
+      zoom:10,
+      center: L.latLng(47.413220, -1.219482),
+      url:'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution:'&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
+      marker: L.latLng(47.413220, -1.219482),
+      watchPositionId : null
+    }
+  },
+  mounted(){
+    var vm = this
+    if (!vm.myUuid) {
+      vm.myUuid = vm.guid();
+      localStorage.setItem('myUuid', vm.myUuid);
+    }else{
+      
+      vm.watchPositionId = navigator.geolocation.watchPosition(vm.successCoords, vm.errorCoords);
+      
+    }
+    
+    
+    
+  },
+  firebase: {
+    users: userRefs.limitToLast(25)
+  },
+  methods:{
+    successCoords(position) {
+    var vm = this
+    if (!position.coords) return
+      
+      userRefs.child(vm.myUuid).set({
+        coords: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        },
+        timestamp: Math.floor(Date.now() / 1000)
+      })
+      vm.center = L.latLng([position.coords.latitude, position.coords.longitude])
+      vm.marker = L.latLng([position.coords.latitude, position.coords.longitude])
+    },
+    errorCoords() {
+      console.log('Unable to get current position')
+    },
+    guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+  }
+});
+</script>
+</html>

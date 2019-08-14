@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>Document</title>
+  <script src="zoom-img.js"></script>
+  <link rel="stylesheet" href="img-zoom.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="leafletroutingmachine.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" data-require="leaflet@0.7.3"
+    data-semver="0.7.3" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+    authDomain: "testproject-f89be.firebaseapp.com",
+    databaseURL: "https://testproject-f89be.firebaseio.com",
+    projectId: "testproject-f89be",
+    storageBucket: "testproject-f89be.appspot.com",
+    messagingSenderId: "282046642874",
+    appId: "1:282046642874:web:c4de5e6851594a6b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+</script>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="home.html">
+        <img src="photo/MFR.png" style="width:50px;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="home.html">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">RENT</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">ABOUT</a>
+            </li>
+
+        </ul>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SHOP</button>
+    </div>
+</nav>
+  <section class="container-fluid_main2">
+    <p>PHUKET WELCOME</p>
+
+
+    <div class="main">
+      <div class="form-group icon-in-right">
+        <span class="fa fa-search icon text-primary"></span>
+        <input type="text" class="form-control effect naranja redondo" placeholder="Search">
+      </div>
+    </div>
+  </section>
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+    
+      
+     
+          <div class="card-deck col-sm-12" id="size">
+
+
+
+            </div>
+      
+      
+        
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="line">
+    <center>
+      <p onclick="myNavFunc()">LOCATION</p>
+    </center>
+    <hr>
+  </div>
+  <br>
+  <div class="location" id="mapid">
+    <div class="card " style="padding: 200px;">
+      <div class="card-body">
+      
+      </div>
+    </div>
+  </div>
+  <br>
+  </div>
+  <section id="credit">
+    <p>Made with <a href="https://www.paypal.me/connorocampo" target="_blank"><i class="fas fa-heart"></i></a> by <a
+        href="https://www.paypal.me/connorocampo" target="_blank">Connor Ocampo</a></p>
+  </section>
+
+
+  <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <!--Content-->
+      <div class="modal-content form-elegant">
+        <!--Header-->
+        <div class="modal-header text-center">
+          <h3 class="modal-title w-200 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+            <strong>รายละเอียดรถจักรยานยนต์</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body mx-12" id="detailbike">
+          <!--Body-->
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.omise.co/omise.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"
+      data-require="leaflet@0.7.3" data-semver="0.7.3"></script>
+    <script type="text/javascript" src="http://www.liedman.net/leaflet-realtime/dist/leaflet-realtime.js"></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="leafletroutingmachine.js"></script>
+
+    <script>
+
+
+      ////////////////////checklogin//////////////////////////////
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          // User is signed in.
+
+          // ...
+        } else {
+          // User is signed out.
+          window.location.href = "index"
+          // ...
+        }
+      });
+
+
+      /////////////////////////showbike////////////////////////////////
+      var storebike = [];
+      // });
+      var shopid = localStorage.getItem("shopid");
+      console.log(shopid);
+
+      var start = localStorage.getItem("start");
+      var end = localStorage.getItem("end");
+      
+      console.log(start, end);
+
+      db.collection("bike").where("shopid", "==", shopid).get()
+        .then(function (querySnapshot) {
+
+          // doc.data() is never undefined for query doc snapshots
+          querySnapshot.docs.forEach(function (cliak) {
+            storebike.push(cliak.data());
+            console.log(storebike);
+
+
+
+            //console.log(check);
+            //                          console.log(check);
+            // console.log(checcknum);
+          });
+          test()
+        })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
+        });
+
+     
+
+
+
+
+
+
+
+
+
+
+
+      function test() {
+console.log("tong");
+        var date1 = new Date(start)
+        var date2 = new Date(end)
+
+        storebike.forEach(function (data) {
+
+          var checcknum = 0
+          console.log(data.type);
+
+
+          db.collection("book").where("shopid", "==", shopid).where("brand", "==", data.brand).where("type", "==", data.type).where("color", "==", data.color).get()
+            .then(function (querySnapshot) {
+
+
+
+
+
+              querySnapshot.docs.forEach(function (cliak) {
+                var minDate = new Date(cliak.data().startdate);
+                var maxDate = new Date(cliak.data().enddate);
+                console.log("d", cliak.data());
+
+                if (minDate <= date2 && minDate >= date1 || maxDate <= date1 && maxDate >= date2 && minDate <= date1 && minDate >= date2 || maxDate <= date2 && maxDate >= date1) {
+
+
+
+
+                  checcknum = checcknum + 1
+                  //    if(checcknum<=data.count){  
+
+                  //  }else{
+
+                  //     check=false;
+
+                  //  }
+
+
+                }
+                else {
+                  console.log(' not  rent');
+                }
+
+
+                //console.log(check);
+                //                          console.log(check);
+                // console.log(checcknum);
+              });
+              // test2()
+              console.log(checcknum);
+
+
+              test2(data, checcknum)
+            })
+            .catch(function (error) {
+              console.log("Error getting documents: ", error);
+            });
+        });
+      }
+      function test2(data, checcknum) {
+        var check = true;
+        if (checcknum < data.count) {
+          console.log(data, check);
+          showbikef(data);
+        } else {
+
+          check = false;
+          console.log(data, check);
+        }
+
+
+      }
+
+      var showbike = ''
+      function showbikef(data) {
+        // var databikeobject= JSON.stringify(data);
+        showbike += '<div class="col-sm-4">'+'<div class="card " ><a href="detailOfmocy.html"></a>' +
+          '<img class="card-img-top" src="'+data.picbike+'" id="Card image">' +
+          '<div class="card-body">' +
+          '<h4 class="card-title">' + data.type + '</h4>' +
+          '<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>' +
+          '</div>' +
+          '<div class="overlay">' +
+          '<div class="text">' +
+          "<center> <a onclick='bikedetail(" + JSON.stringify(data) + ")' class='btn btn-default btn-rounded' data-toggle='modal' data-target='#elegantModalForm'>Buy Me</a></center></div>" +
+          '</div>' +
+          '</div>'+'</div>'
+
+        document.getElementById('size').innerHTML = showbike;
+        console.log(showbike);
+
+      }
+
+
+      //////////////////////map//////////////////////////////////////////
+      
+var map
+ 
+   db.collection("shop").doc(shopid).get()
+        .then(function (querySnapshot) {
+
+          // doc.data() is never undefined for query doc snapshots
+         
+            // storebike.push(cliak.data());
+            console.log(querySnapshot.data());
+            map=querySnapshot.data()
+console.log(map);
+
+
+            //console.log(check);
+            //                          console.log(check);
+            // console.log(checcknum);
+          
+   
+      
+
+
+
+
+      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGVra2xhIiwiYSI6ImNqd3Q3a2lqNzBnODMzeW1xdWVtbzJ5NG0ifQ.hlJDNJAqup1I9yMU03A0jQ', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 15,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibGVra2xhIiwiYSI6ImNqd3Q3a2lqNzBnODMzeW1xdWVtbzJ5NG0ifQ.hlJDNJAqup1I9yMU03A0jQ'
+      }).addTo(mymap);
+      mymap.on('click', function(e) {
+    alert(e.latlng);
+});
+      // var marker = L.marker([51.5, -0.09]).addTo(mymap);
+      // var layer = L.marker([51.6, -0.09]).addTo(mymap);
+      // layer.addTo(mymap);
+      var t
+      var t2
+      var lat = {};
+      var check = false;
+      my_function()
+      function my_function() {
+        /// call your function here
+
+        mymap.locate();
+      };
+
+      setInterval(my_function, 1000);
+      function onLocationFound(e) {
+        var radius = e.accuracy;
+        console.log(e.latlng);
+        lat = e.latlng;
+        //   L.marker(e.latlng).addTo(mymap)
+        //         .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        if (t) { // check
+          mymap.removeLayer(t);
+          mymap.removeLayer(t2);
+        }
+        t2 = L.circle(e.latlng, radius).addTo(mymap);
+        t = L.circle(e.latlng, {
+          color: 'white',
+          fillColor: 'blue',
+          className: 'blinking'
+        }).addTo(mymap)
+
+
+        var myIcon = L.icon({
+          iconUrl: 'leaf-green.png',
+          shadowUrl: 'leaf-shadow.png',
+
+          iconSize: [38, 95], // size of the icon
+          shadowSize: [50, 64], // size of the shadow
+          iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+          shadowAnchor: [4, 62],  // the same for the shadow
+          popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
+
+        if (check == false) {
+          L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(mymap);
+          var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          })
+          L.Routing.control({
+            lineOptions: {
+              styles: [
+                { color: ' #ececec', opacity: 0.9, weight: 9 },
+                { color: ' rgb(113, 167, 253)', opacity: 1, weight: 3 }
+              ]
+            }, setView: true, addWaypoints: false,
+            waypoints: [
+              L.latLng(lat.lat, lat.lng),
+              L.latLng(map.lat, map.lng)
+            ], show: false, createMarker: function () {
+              return L.marker([map.lat, map.lng], {
+                icon: myIcon
+              }).addTo(mymap);
+            }
+          }).addTo(mymap);
+
+          check = true;
+        }
+      }
+      mymap.on('locationfound', onLocationFound);
+
+      function onLocationError(e) {
+        // alert(e.message);
+      }
+
+      mymap.on('locationerror', onLocationError);
+    })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
+        });
+
+      function myNavFunc() {
+        console.log(map);
+        
+        // If it's an iPhone..
+        if ((navigator.platform.indexOf("iPhone") != -1)
+          || (navigator.platform.indexOf("iPod") != -1)
+          || (navigator.platform.indexOf("iPad") != -1)
+          || (navigator.platform.indexOf("Android") != -1))
+          window.open('maps://maps.google.com/maps?daddr='+map.lat+','+ map.lng+'&amp;ll=');
+        else
+          window.open('http://maps.google.com/maps?daddr='+map.lat+','+ map.lng+'&amp;ll=');
+      }
+
+
+
+      /////////////////////////////////////////////bikedetail///////////////////////////////////
+      function bikedetail(data) {
+
+        console.log(data.brand);
+        // var dataobject=JSON.parse(data)
+        var html = '<div class="container">' +
+          '<div class="row">' +
+          '<div class="col-sm-6">' +
+
+          '<img id="myimage" src="photo/mocy2.jpeg" width="200px" height="200px">' +
+
+          '</div>' +
+         
+          '<div class="col-sm-6">' +
+          '<p>ยี่ห้อรถ : ' + data.brand + '</p>' +
+          '<p>ระบบเกียร์ :</p>' +
+          '<p>ขนาดเครื่องยนต์ :</p>' +
+          '<p>แบบเครื่องยนต์ :</p>' +
+          '<p>ราคารถเช่า :</p>' +
+          '<a  class="btn btn-default btn-rounded " onclick="openpayrent()">BOOK</a>' +
+
+          '</div>' + '</div>' +
+          '          </div>'
+
+        document.getElementById('detailbike').innerHTML = html
+        localStorage.setItem('bikedetail', JSON.stringify(data));
+        ////////////////////////////zoomimg/////////////////////////////////////////////////////
+        magnify("myimage", 3);
+      }
+
+      function openpayrent() {
+        // $('#elegantModalForm').modal('hide')
+        // $("#elegantModalForm").modal({'hide':true,'backdrop': false});
+        // $("#elegantModalForm").on('hidden.bs.modal', function(){
+        window.location.href = 'rent.html'
+        // $('#elegantModalForm').modal('hide')
+        // });
+
+
+
+
+
+      }
+
+ 
+    </script>
+
+</body>
+
+</html>

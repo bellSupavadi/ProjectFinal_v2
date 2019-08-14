@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+<script>
+      // Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+  authDomain: "testproject-f89be.firebaseapp.com",
+  databaseURL: "https://testproject-f89be.firebaseio.com",
+  projectId: "testproject-f89be",
+  storageBucket: "testproject-f89be.appspot.com",
+  messagingSenderId: "282046642874",
+  appId: "1:282046642874:web:c4de5e6851594a6b"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+
+</script>
+<body>
+    <div id="result"></div>
+    <div id="demo"></div>
+    <button>Send an HTTP POST request to a page and get the result back</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+    document.getElementById("result").innerHTML = localStorage.getItem("y");
+var y=localStorage.getItem("y");
+// httpGet()
+//     function httpGet()
+//     {
+//     var urlvariable;
+
+//     urlvariable = "text";
+
+//    var URL = "http://localhost:3000/charge"
+
+// var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       document.getElementById("demo").innerHTML = this.responseText;
+//     }
+//   };
+//   xhttp.open("POST", URL, true);
+//   xhttp.send(x);}
+$("button").click(function(){
+$.ajax({
+    type: "POST",
+    url: "https://fierce-fortress-50416.herokuapp.com/recipent",
+    data: '{"item":"tong"}',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data) {
+       console.log(data);
+       localStorage.clear();
+    },
+    error: function(data){
+        alert("fail");
+    }
+});
+});
+// $(document).ready(function(){
+//   $("button").click(function(){
+//     $.post("http://localhost:3000/charge",
+//     {
+//       name: x,
+     
+//     },
+//     function(data,status){
+//       alert("Data: " + data + "\nStatus: " + status);
+//     });
+//   });
+// });
+</script>
+</html>
