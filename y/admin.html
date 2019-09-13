@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <title>Document</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDoHO89lanbk1_OqG9oBPSRYkYhc5OpHlw",
+        authDomain: "testproject-f89be.firebaseapp.com",
+        databaseURL: "https://testproject-f89be.firebaseio.com",
+        projectId: "testproject-f89be",
+        storageBucket: "testproject-f89be.appspot.com",
+        messagingSenderId: "282046642874",
+        appId: "1:282046642874:web:c4de5e6851594a6b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+    var storage = firebase.storage();
+</script>
+
+<body>
+    <style>
+        th {
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+      
+    </style>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=""
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">
+            <img src="photo/MFR.png" style="width:50px;">
+        </a>
+
+    </nav>
+    <br>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="#admin1" data-toggle="tab" class="nav-link active">รายงานข้อมูลการเช่ารถจักรยานยนต์</a>
+            </li>
+            <li class="nav-item">
+                <a href="#admin2" data-toggle="tab" class="nav-link">รายงานร้านเช่ารถจักรยานยนต์</a>
+            </li>
+            <li class="nav-item">
+                <a href="#admin3" data-toggle="tab" class="nav-link">รายงานข้อมูลสมาชิกในเว็บไซต์</a>
+            </li>
+            <li class="nav-item">
+                <a href="#admin4" data-toggle="tab" class="nav-link">รายงานข้อความจากสมาชิก</a>
+            </li>
+        </ul>
+        <br><br>
+        <div class="tab-content py-3">
+            <div class="tab-pane active" id="admin1">
+                <table id="myTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ชื่อ</th>
+                            <th>Email</th>
+                            <th>วันที่เช่า</th>
+                            <th>วันรับรถ</th>
+                            <th>วันคืนรถ</th>
+                            <th>เช่าร้าน</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ReportBook">
+
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="admin2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ชื่อร้าน</th>
+                            <th>Login</th>
+                            <th>Logout</th>
+                            <th>Not Update</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="admin3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ชื่อ</th>
+                            <th>Email</th>
+                            <th>วันที่สมัคร</th>
+                            <th>ชื่อร้านที่เช่า</th>
+                            <th>รายละเอียด</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="" class="btn btn-outline-primary" data-toggle="modal"
+                                    data-target="#elegantModalForm">
+                                    รายละเอียด</a></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="admin4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ชื่อ</th>
+                            <th>วันที่</th>
+                            <th>เวลา</th>
+                            <th>รายละเอียดของข้อความ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- <section id="credit">
+        <p>Motorcycle For Rent</p>
+    </section> -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mx-4">
+                    <!--Body-->
+
+                    <p>รายละเอียด</p>
+                    <hr>
+                    <br>
+                    <p>ประวัติการเงิน</p>
+                    <hr>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อร้าน</th>
+                                <th>ยี่ห้อรถ</th>
+                                <th>วันที่โอนเงินให้ร้าน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+                <script>
+                    // // wire up shown event
+                    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                        console.log("tab shown...");
+
+                    });
+
+                    // read hash from page load and change tab
+                    var hash = document.location.hash;
+                    var prefix = "tab_";
+                    if (hash) {
+                        $('.nav-tabs a[href="' + hash.replace(prefix, "") + '"]').tab('show');
+                    }
+                    // Javascript to enable link to tab
+                    firebase.auth().onAuthStateChanged(function (user) {
+                        if (user) {
+                            // User is signed in.
+                            // email = user.email
+                            uid = user.uid
+                            AdminReportBook()
+                            // ...
+                        } else {
+                            // User is signed out.
+                            window.location.href = "index.html"
+                            // ...
+                        }
+                    });
+
+                    var uid
+                    var shopid = localStorage.getItem("shopid");
+
+                    function AdminReportBook() {
+                        var adminbook = ''
+                        db.collection("shop").get()
+                            .then(function (querySnapshot) {
+
+                                querySnapshot.docs.forEach(function (information) {
+                                    console.log(information.id);
+
+                                    db.collection("book").where("shopid", '==', information.id).orderBy("book", "desc").get()
+                                        .then(function (querySnapshot1) {
+                                            querySnapshot1.docs.forEach(function (data) {
+
+
+                                                adminbook += '<tr>' +
+
+                                                    '<td scope="row">' + data.data().name + ' ' + data.data().surname + '</td>' +
+                                                    '<td>' + data.data().mail + '</td>' +
+                                                    '<td>' + data.data().book + '</td>' +
+                                                    '<td>' + data.data().startdate + '</td>' +
+                                                    '<td>' + data.data().enddate + '</td>' +
+                                                    '<td>' + information.data().shopname + '</td>' +
+                                                    '</tr>'
+
+                                                document.getElementById('ReportBook').innerHTML = adminbook;
+                                            });
+                                            $(document).ready(function () {
+                                                $('#myTable').DataTable();
+                                            });
+                                        })
+                                })
+                                    .catch(function (error) {
+                                        console.log("Error getting documents: ", error);
+                                    });
+
+
+                            })
+                            .catch(function (error) {
+                                console.log("Error getting documents: ", error);
+                            });
+
+
+                    }
+
+                </script>
+</body>
+
+</html>

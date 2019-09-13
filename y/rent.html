@@ -54,21 +54,19 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="home.html">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">RENT</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">ABOUT</a>
-                </li>
-
-            </ul>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SHOP</button>
-        </div>
+                <ul class="navbar-nav ml-auto">
+                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">RENT</a>
+                    </li>
+        
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT</a>
+                    </li>
+        
+                </ul>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SHOP</button>
+            </div>
     </nav>
 
     </div>
@@ -76,12 +74,12 @@
 <br><br><br>
     <div class="container-fluid_detail">
         
-        <center><p>รายละเอียดการจองรถ</p></center>
+        <center><p style="font-size: 25px;">รายละเอียดการจองรถ</p></center>
         <hr>
         <img src="photo/mocy2.jpeg" alt="" srcset="" class="mx-auto d-block" style="width:50%">
          
            <hr>
-           <center><p>รายละเอียดการเช่ารถ</p></center>
+           <center><p style="font-size: 25px;">รายละเอียดการเช่ารถ</p></center>
            <br>
            <div class="form-group">
             <div class="row">
@@ -106,7 +104,12 @@
             </div>
         </div>
         <br>
-        <center><p>รายละเอียดของผู้ขับรถ</p></center>
+        <center><p style="font-size: 25px;">รายละเอียดของผู้ขับรถ</p></center>
+        <div class="form-check">
+                    <input type="checkbox" onclick="namenow()" class="form-check-input" id="materialUnchecked">
+                    <label class="form-check-label" for="materialUnchecked" style="color: red">ใช้ชื่อปัจจุบัน</label>
+                </div>
+                <br>
            <div class="form-group">
                <div class="row">
                    <div class="col-sm-6">
@@ -136,19 +139,16 @@
                     </div>
              </div>
             </div>
-            <div class="form-check">
-                    <input type="checkbox" onclick="namenow()" class="form-check-input" id="materialUnchecked">
-                    <label class="form-check-label" for="materialUnchecked">ใช้ชื่อปัจจุบัน</label>
-                </div>
-<a  onclick="sendtopayment()" class="btn btn-outline-danger stretched-link">จองเลย</a>
+            
+<center><a  onclick="sendtopayment()" class="btn btn-outline-danger stretched-link">จองเลย</a></center>
 
                 </div>
             </div>
 </div>
 <br><br><br><br>
-    <section id="credit">
+    <!-- <section id="credit">
         <p>Motorcycle For Rent</p>
-    </section>
+    </section> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="js/intlTelInput.js"></script> -->

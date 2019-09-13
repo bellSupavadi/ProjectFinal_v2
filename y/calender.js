@@ -20,31 +20,65 @@
 // 		);
 // 	});
 //   });
-var book
-tong()
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+/////////////////////////////////////////////////  
+var book=[]
+
   function tong(){
-       book=[
-                {
-                    title: 'Barber',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                    start: '2019-07-07',
-                    end: '2019-07-07',
-                    className: 'fc-bg-default',
-                    icon : "circle"
-                },
-                {
-                    title: 'Flight Paris',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                    start: '2019-08-08T14:00:00',
-                    end: '2019-08-08T20:00:00',
-                    className: 'fc-bg-deepskyblue',
-                    icon : "cog",
-                    allDay: false
-                },
+    db.collection("book").where("shopid", "==", shopid).get()
+    .then(function (querySnapshot) {
+        // doc.data() is never undefined for query doc snapshots
+        querySnapshot.docs.forEach(function (data) {
+            var start = new Date(data.data().startdate);
+            var end = new Date(data.data().enddate);
+            var object= {
+                title: data.data().brand,
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+                start: start,
+                end: end,
+                className: 'fc-bg-default',
+                icon : "cog",
+                color:getRandomColor()
+            }
+           book.push(object)
+console.log(book);
+
+        });
+        test()
+
+    })
+    .catch(function (error) {
+        console.log("Error getting documents: ", error);
+    });
+    //    book=[
+    //             {
+    //                 title: 'Barber',
+    //                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+    //                 start: '2019-07-07',
+    //                 end: '2019-07-07',
+    //                 className: 'fc-bg-default',
+    //                 icon : "circle"
+    //             },
+    //             {
+    //                 title: 'Flight Paris',
+    //                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+    //                 start: '2019-08-08T14:00:00',
+    //                 end: '2019-08-08T20:00:00',
+    //                 className: 'fc-bg-deepskyblue',
+    //                 icon : "cog",
+    //                 allDay: false
+    //             },
                
-            ]
+    //         ]
          
-            test()
+          
         }
 function test() {
     

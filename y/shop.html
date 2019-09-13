@@ -47,7 +47,7 @@
 
 <body>
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="#">
           <img src="photo/MFR.png" style="width:50px;">
         </a>
 
@@ -58,9 +58,7 @@
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="home.html">HOME</a>
-            </li>
+         
             <li class="nav-item">
                 <a class="nav-link" href="#">RENT</a>
               </li>
@@ -68,11 +66,15 @@
         <li class="nav-item">
           <a class="nav-link" href="about.html">ABOUT</a>
         </li>
+        
         <li class="nav-item">
+            <a class="btn btn-outline-success my-2 my-sm-0" href="shopowner.html">SHOP</a>
+          </li>
+          <li class="nav-item">
           <a class="nav-link" onclick="logout()">LOGOUT</a>
         </li>
       </ul>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="shopowner.html">SHOP</a>
+  
       
     </div>
   </nav>
@@ -105,10 +107,10 @@
           </div>
         </div> 
       </div>
-  <section id="credit">
+  <!-- <section id="credit">
     <p>Made with <a href="https://www.paypal.me/connorocampo" target="_blank"><i class="fas fa-heart"></i></a> by <a
         href="https://www.paypal.me/connorocampo" target="_blank">Connor Ocampo</a></p>
-  </section>
+  </section> -->
 </div>
 
 
@@ -187,7 +189,7 @@ allshop()
           '<img class="card-img-top" src="'+data.data().picshop+'" alt="Card image">'+
         '<div class="card-body">'+
          ' <h4 class="card-title">'+data.data().shopname+'</h4>'+
-          '<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>'+
+          '<p class="card-text">ที่อยู่ร้าน : '+data.data().address+'</p>'+
           
           '<a onclick="sendToherf('+"'"+data.id+"'"+')" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#elegantModalForm">'+
               'Detail</a>'+

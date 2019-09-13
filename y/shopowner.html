@@ -13,6 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <title>ABOUNT</title>
   <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -41,7 +42,7 @@
 
 <body>
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="home.html">
+      <a class="navbar-brand" href="index.html">
           <img src="photo/MFR.png" style="width:50px;">
         </a>
 
@@ -51,18 +52,21 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="home.html">HOME</a>
-            </li>
+        <ul class="navbar-nav ml-auto">
+         
             <li class="nav-item">
-                <a class="nav-link" href="index.html">RENT</a>
+                <a class="nav-link" href="shop.html">RENT</a>
               </li>
+              
         <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT</a>
+          <a class="nav-link" href="about.html">ABOUT</a>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link" href="#one">CONTACT</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" href="#">SHOP</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" onclick="logout()">LOGOUT</a>
         </li>
       </ul>
     </div>
@@ -73,10 +77,13 @@
  
 <div class="container">
     <br>
+    <br>   <br>
     <br>
+   <center> <i class='fas fa-store-alt' style='font-size:200px;color:gray'></i><br><br><br>
     <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#elegantModalForm">ลงทะเบียนร้าน</a>
-
+</center>
  </div>
+ 
     <!-- Modal -->
  <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
  aria-hidden="true">
@@ -93,7 +100,7 @@
      <!--Body-->
      <div class="modal-body mx-4">
        <!--Body-->
-      
+       <div class="card mx-auto border-0" >
       <p>เงื่อนไข</p>
       <p>1. หากร้านค้าไม่มีการอัพเดตภายใน6เดือน จะเเจ้งเตือนครั้งที่1 หลังจากการเเจ้งเตือนครั้งที่1 หากไม่มีการอัพเดตภายใน1เดือน จะแจ้งเตือนครั้งที่2 หลังจากการเเจ้งเตือนครั้งที่2 หากไม่มีการอัพเดตภายใน15วัน จะทำการลบidและแบนร้านค้าทันที</p>
  <p>2. การโอนเงินจากลูกค้า จะต้องผ่านบัญชีของเว็บไซต์ เมื่อลูกค้าได้รับรถ ทางเว็บไซต์จะทำการโอนเงินให้ภายหลัง</p>
@@ -108,10 +115,13 @@
 
 
 
-      <div class="row">
-      <a href="registshop.html" class="btn btn-outline-success">ตกลง</a>
-      <a href="" class="btn btn-outline-danger">ยกเลิก</a>
- </div>
+      
+       
+     <center> <a href="registshop.html" class="btn btn-outline-success">ตกลง</a>
+      
+      <a href="" class="btn btn-outline-danger">ยกเลิก</a></center> 
+ 
+    </div>
       
    </div>
    
@@ -119,9 +129,7 @@
  </div>
   
   
-  <section id="credit">
-      <p>Motorcycle For Rent</p>   
-  </section>
+  
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

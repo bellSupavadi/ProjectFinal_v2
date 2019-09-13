@@ -8,18 +8,21 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery library -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css">
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet"> 
- 
-  <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <title>Document</title>
     <script src="calender.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -51,17 +54,36 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=""
+
+        <a class="navbar-brand" href="index.html">
+            <img src="photo/MFR.png" style="width:50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="#">
-            <img src="photo/MFR.png" style="width:50px;">
-        </a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
 
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">RENT</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">ABOUT</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="shopowner.html">SHOP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="logout()">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-    <br> 
+    <br>
     <div class="container">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -124,57 +146,61 @@
                     <label for="">ที่อยู่</label>
                     <textarea class="form-control" rows="5" id="address"></textarea>
                 </div>
-                <button class="btn" onclick="editshop()">
-                    Notification <span class="badge badge-primary" id="edit">edit</span>
-                </button>
+                <a class="btn btn-outline-primary" onclick="editshop()" id="edit">แก้ไข</a>
+
             </div>
             <div class="tab-pane" id="tab2">
 
                 <a href="" class="btn btn-outline-danger" data-toggle="modal"
                     data-target="#elegantModalForm">เพิ่มรถ</a>
+
                 <div class="container">
-<div class="row">
-                    <div class="card-deck" id="bike">
+                    <div class="row">
+                        <div class="card-deck col-12" id="bike">
 
 
 
 
 
-                    </div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane" id="tab3">
-                <a href="" class="btn btn-outline-danger" data-toggle="modal"
-                    data-target="#elegantModalForm_bank" id="addbanking">เพิ่มบัญชีธนาคาร</a>
+                <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#elegantModalForm_bank"
+                    id="addbanking">เพิ่มบัญชีธนาคาร</a>
                 <div class="container" id="banking">
-                   
+
                 </div>
             </div>
             <div class="tab-pane" id="tab4">
-                    <div class="p-3">
-                           <center> <h2 class="mb-4">Calendar</h2></center>
-                            <!-- <div class="card">
+                <div class="p-3">
+                    <center>
+                        <h2 class="mb-4">Calendar</h2>
+                    </center>
+                    <!-- <div class="card">
                               <div class="card-body p-0"> -->
-                                <div id="calendar"></div>
-                              <!-- </div>
+                    <div id="calendar"></div>
+                    <!-- </div>
                             </div> -->
+                </div>
+                <!-- calendar modal -->
+                <div id="modal-view-event" class="modal modal-top fade calendar-modal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h4 class="modal-title"><span class="event-icon"></span><span
+                                        class="event-title"></span></h4>
+                                <div class="event-body"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
-                            <!-- calendar modal -->
-  <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
-              <div class="event-body"></div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-                        
-                          
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -186,9 +212,9 @@
 
 
 
-    <section id="credit">
+    <!-- <section id="credit">
         <p>Motorcycle For Rent</p>
-    </section>
+    </section> -->
 
     <!-- Modal -->
     <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -237,99 +263,101 @@
                         </div>
 
                     </div>
-               
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label for="">รุ่นปีรถ</label>
-                            <select class="form-control" name="" id="typeyear">
-                                <option>2019</option>
-                                <option>2018</option>
-                                <option>2017</option>
-                            </select></div>
-                        <div class="col-sm-4">
-                            <label for="">ขนาดเครื่องยนต์</label>
-                            <input type="text" class="form-control" name="" id="motor" aria-describedby="helpId"
-                                placeholder="300 CC">
-
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="">แบบเครื่องยนต์</label>
-                            <input type="text" class="form-control" name="" id="typemotor" aria-describedby="helpId"
-                                placeholder="4 จังหวะ">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-
-                        <div class="col-sm-6">
-                            <label for="">ประเภทเชื้อเพลิงที่ใช้เติม</label>
-                            <input type="text" class="form-control" name="" id="typegass" aria-describedby="helpId"
-                                placeholder="เบนซิน 91">
-
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="">ราคาเช่าต่อวัน</label>
-                            <input type="text" class="form-control" name="" id="price" aria-describedby="helpId"
-                                placeholder="300 ">
-
-                        </div>
-                    </div>
-                </div>
 
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="">กี่คัน</label>
-                            <input type="number" class="form-control" name="" id="count" aria-describedby="helpId"
-                                placeholder="300 ">
-
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="">ระบบเกียร์</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Radios" id="Radios1" value="option1">
-                                <label class="form-check-label" for="Radios1">
-                                    Automatic
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
-                                <label class="form-check-label" for="Radios2">
-                                    Maual
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-10">
                     <div class="form-group">
-                        <label>อัพโหลดรูปภาพรถ</label>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    เลือกรูป.. <input type="file" id="files">
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="">รุ่นปีรถ</label>
+                                <select class="form-control" name="" id="typeyear">
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                </select></div>
+                            <div class="col-sm-4">
+                                <label for="">ขนาดเครื่องยนต์</label>
+                                <input type="text" class="form-control" name="" id="motor" aria-describedby="helpId"
+                                    placeholder="300 CC">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="">แบบเครื่องยนต์</label>
+                                <input type="text" class="form-control" name="" id="typemotor" aria-describedby="helpId"
+                                    placeholder="4 จังหวะ">
+
+                            </div>
                         </div>
-                        <center><img id='img-upload' /></center>
                     </div>
-                  <center>  <a href="#" class="btn btn-primary" onclick="addpic()">บันทึก</a></center>
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <label for="">ประเภทเชื้อเพลิงที่ใช้เติม</label>
+                                <input type="text" class="form-control" name="" id="typegass" aria-describedby="helpId"
+                                    placeholder="เบนซิน 91">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="">ราคาเช่าต่อวัน</label>
+                                <input type="text" class="form-control" name="" id="price" aria-describedby="helpId"
+                                    placeholder="300 ">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="">กี่คัน</label>
+                                <input type="number" class="form-control" name="" id="count" aria-describedby="helpId"
+                                    placeholder="300 ">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="">ระบบเกียร์</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Radios" id="Radios1"
+                                        value="option1">
+                                    <label class="form-check-label" for="Radios1">
+                                        Automatic
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Radios" id="Radios2"
+                                        value="option2">
+                                    <label class="form-check-label" for="Radios2">
+                                        Maual
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label>อัพโหลดรูปภาพรถ</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        เลือกรูป.. <input type="file" id="files">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <center><img id='img-upload' /></center>
+                        </div>
+                        <center> <a href="#" class="btn btn-primary" onclick="addpic()">บันทึก</a></center>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    
+
 
     <!-- Bank-->
 
@@ -364,7 +392,7 @@
                                     <option>ktb</option>
                                     <option>scb</option>
                                     <!-- <option>ธนาคารไทยพาณิชย์ จำกัด (มหาชน)</option> -->
-                                   
+
                                 </select></div>
                             <div class="col-sm-6">
                                 <label for="">สาขา</label>
@@ -397,18 +425,18 @@
         </div>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --> 
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
-    
+
     <script src="https://cdn.omise.co/omise.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
 
     <script>
-          firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.
                 email = user.email
@@ -433,8 +461,12 @@
             }
             else if (e.currentTarget.hash == "#tab3") {
 
-checkbank();
-}
+                checkbank();
+            }
+            else if (e.currentTarget.hash == "#tab4") {
+
+                tong();
+            }
         });
         // read hash from page load and change tab
         var hash = document.location.hash;
@@ -452,7 +484,7 @@ checkbank();
         var pic2 = ''
         var shopid
         var nameandlastname
-      
+
 
         function showdetailshop() {
 
@@ -460,8 +492,8 @@ checkbank();
                 .then(function (querySnapshot) {
                     // doc.data() is never undefined for query doc snapshots
                     querySnapshot.docs.forEach(function (data) {
-                        shopid =data.id
-                        nameandlastname=data.data().name
+                        shopid = data.id
+                        nameandlastname = data.data().name
                         document.getElementById('tab1').removeAttribute('style')
 
                         document.getElementById('imagePreview').setAttribute('style', "background-image: url(" + data.data().picshop + ");")
@@ -607,7 +639,7 @@ checkbank();
 
             document.querySelector('#address').removeAttribute("disabled")
             document.querySelector('#edit').setAttribute("onclick", 'okshop()')
-            $("#edit").text('ok');
+            $("#edit").text('บันทึก');
 
         }
         function okshop() {
@@ -662,21 +694,20 @@ checkbank();
                                     //    var x = document.createElement("div");         // Create a text node
 
                                     var html =
-                                    '<div class="col-sm-4">'+
+                                        '<div class="col-sm-4">' + '<br>' +
                                         '<div class="card"><a href="detailOfmocy.html"></a>' +
                                         '<img class="card-img-top" src="' + data.data().picbike + '" id="Card image">' +
                                         '<div class="card-body">' +
                                         '<h4 class="card-title">' + data.data().type + '</h4>' +
-                                        '<p class="card-text">Some example text some example text. John Doe is an architect' +
-                                        'and engineer</p>' +
+
 
                                         '</div>' +
-                                       
-                                        
-                                        '<center> <a href="#" class="btn btn-primary stretched-link">See Profile</a>'
+
+
+                                        '<center> <a href="#" class="btn btn-primary stretched-link">ข้อมูลรถ</a>'
                                     '</center>'
-                                   
-                                        '</div>' +
+
+                                    '</div>' +
 
                                         '</div>'
                                     // x.classList.add(html);
@@ -796,28 +827,28 @@ checkbank();
         }
 
         function createreciept() {
-            var bank =document.getElementById("bank").value;
-            var major =document.getElementById("major").value;
-            var numbank =document.getElementById("numbank").value;
-            var namebank =document.getElementById("namebank").value;
-            var bankobject={
+            var bank = document.getElementById("bank").value;
+            var major = document.getElementById("major").value;
+            var numbank = document.getElementById("numbank").value;
+            var namebank = document.getElementById("namebank").value;
+            var bankobject = {
                 name: namebank,
-              email: email,
-              type: 'individual',
-              bank_account: {
-                brand: bank,
-                number: numbank,
-                name: namebank
+                email: email,
+                type: 'individual',
+                bank_account: {
+                    brand: bank,
+                    number: numbank,
+                    name: namebank
 
-            }
+                }
             }
             console.log(bankobject);
             var object = JSON.stringify(bankobject)
             $.ajax({
                 type: "POST",
                 url: "https://fierce-fortress-50416.herokuapp.com/recipent",
-                data:object,
-                 contentType: "application/json; charset=utf-8",
+                data: object,
+                contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
                     console.log(data.data.id);
@@ -828,17 +859,20 @@ checkbank();
                         major: major,
                         numbank: numbank,
                         namebank: namebank,
-                        shopid:shopid,
-                        recipentid:data.data.id
+                        shopid: shopid,
+                        recipentid: data.data.id
 
-            })
-                .then(function (docRef) {
-                    console.log("Document written with ID: ", docRef.id);
-                    showshopbikedetail()
-                })
-                .catch(function (error) {
-                    console.error("Error adding document: ", error);
-                });
+                    })
+                        .then(function (docRef) {
+                            console.log("Document written with ID: ", docRef.id);
+                            $("#elegantModalForm_bank").modal('hide')
+                            $("#addbanking").text('แก้ไข');
+                            document.querySelector('#createbank').setAttribute("onclick", 'editbank()')
+                            showshopbikedetail()
+                        })
+                        .catch(function (error) {
+                            console.error("Error adding document: ", error);
+                        });
 
 
 
@@ -852,7 +886,7 @@ checkbank();
                     // $("#cross").modal();
                     // storebike=[]
                     console.log(data);
-                    
+
                     alert("fail");
                 }
             });
@@ -861,115 +895,116 @@ checkbank();
         function checkbank() {
             $("#banking").html("");
             console.log(shopid);
-            
+
             db.collection("bank").where("shopid", "==", shopid).get()
-    .then(function (querySnapshot) {
-      // doc.data() is never undefined for query doc snapshots
-      if(querySnapshot.docs=""){}else{
-      querySnapshot.docs.forEach(function(data) {
-          var html = '<div class="card ">'+
-                        '<img class="card-img-top" alt="">'+
-                        '<div class="card-body">'+
-                            '<h4 class="card-title">'+data.data().bank+'</h4>'+
-                            '<p class="card-text">'+data.data().namebank+'</p>'+
-                        '</div>'+
-                    '</div>'
-          $("#banking").append(html);
-          document.getElementById("bank").value = data.data().bank;
-                        //document.getElementById('bank').setAttribute("disabled", false)
-                        document.getElementById("namebank").value = data.data().namebank;
-                        //document.getElementById('namebank').setAttribute("disabled", false)
-                        document.getElementById("numbank").value = data.data().numbank;
-                        //document.getElementById('numbank').setAttribute("disabled", false)
-                        document.getElementById("major").value = data.data().major;
-                       // document.getElementById('major').setAttribute("disabled", false)
-                       $("#addbanking").text('แก้ไข');
-                       document.querySelector('#createbank').setAttribute("onclick", 'editbank()')
-                       console.log("onclick");
-                       
-      });
-      }
-
-    })
-    .catch(function (error) {
-      console.log("Error getting documents: ", error);
-    });
-        }
-function editbank() {
-    console.log("edit");
-    
-    var bank =document.getElementById("bank").value;
-            var major =document.getElementById("major").value;
-            var numbank =document.getElementById("numbank").value;
-            var namebank =document.getElementById("namebank").value;
-//             var bankobject={
-//                 name: namebank,
-//               email: email,
-//               type: 'individual',
-//               bank_account: {
-//                 brand: bank,
-//                 number: numbank,
-//                 name: namebank
-
-//             }
-//             }
-
-// console.log(bankobject);
-
-//             var object = JSON.stringify(bankobject)
-         
-
-    db.collection("bank").where("shopid", "==", shopid).get()
                 .then(function (querySnapshot) {
-                    
+                    // doc.data() is never undefined for query doc snapshots
+                    if (querySnapshot.docs = "") { } else {
+                        querySnapshot.docs.forEach(function (data) {
+                            var html = '<div class="card ">' +
+                                '<img class="card-img-top" alt="">' +
+                                '<div class="card-body">' +
+                                '<h4 class="card-title">' + data.data().bank + '</h4>' +
+                                '<p class="card-text">' + data.data().namebank + '</p>' +
+                                '</div>' +
+                                '</div>'
+                            $("#banking").append(html);
+                            document.getElementById("bank").value = data.data().bank;
+                            //document.getElementById('bank').setAttribute("disabled", false)
+                            document.getElementById("namebank").value = data.data().namebank;
+                            //document.getElementById('namebank').setAttribute("disabled", false)
+                            document.getElementById("numbank").value = data.data().numbank;
+                            //document.getElementById('numbank').setAttribute("disabled", false)
+                            document.getElementById("major").value = data.data().major;
+                            // document.getElementById('major').setAttribute("disabled", false)
+                            $("#addbanking").text('แก้ไข');
+                            document.querySelector('#createbank').setAttribute("onclick", 'editbank()')
+                            console.log("onclick");
+
+                        });
+                    }
+
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+        }
+        function editbank() {
+            console.log("edit");
+
+            var bank = document.getElementById("bank").value;
+            var major = document.getElementById("major").value;
+            var numbank = document.getElementById("numbank").value;
+            var namebank = document.getElementById("namebank").value;
+            //             var bankobject={
+            //                 name: namebank,
+            //               email: email,
+            //               type: 'individual',
+            //               bank_account: {
+            //                 brand: bank,
+            //                 number: numbank,
+            //                 name: namebank
+
+            //             }
+            //             }
+
+            // console.log(bankobject);
+
+            //             var object = JSON.stringify(bankobject)
+
+
+            db.collection("bank").where("shopid", "==", shopid).get()
+                .then(function (querySnapshot) {
+
                     // doc.data() is never undefined for query doc snapshots
                     querySnapshot.docs.forEach(function (datas) {
-                        var bankobject={recipentid:datas.data().recipentid,
-                name: namebank,
-              email: email,
-              type: 'individual',
-              bank_account: {
-                brand: bank,
-                number: numbank,
-                name: namebank
-                
-            }
-            }
+                        var bankobject = {
+                            recipentid: datas.data().recipentid,
+                            name: namebank,
+                            email: email,
+                            type: 'individual',
+                            bank_account: {
+                                brand: bank,
+                                number: numbank,
+                                name: namebank
 
-console.log(bankobject);
+                            }
+                        }
 
-            var object = JSON.stringify(bankobject)
+                        console.log(bankobject);
+
+                        var object = JSON.stringify(bankobject)
                         $.ajax({
-                type: "POST",
-                url: "http://localhost:3000/recipent_edit",
-                data:object,
-                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                   // console.log(data.data.id);
-                        console.log(data);
-                        
-                     //   console.log(data.id);
+                            type: "POST",
+                            url: "https://fierce-fortress-50416.herokuapp.com/recipent_edit",
+                            data: object,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                // console.log(data.data.id);
+                                console.log(data);
 
-                        db.collection("bank").doc(datas.id).update({
-                            bank: bank,
-                        major: major,
-                        numbank: numbank,
-                        namebank: namebank,
-                        
-                        recipentid:data.data.id
-                        });  
-                        checkbank();
-                        
-                          },
-                error: function (data) {
-                    // $("#cross").modal();
-                    // storebike=[]
-                    console.log(data);
-                    
-                    alert("fail");
-                }
-            });
+                                //   console.log(data.id);
+
+                                db.collection("bank").doc(datas.id).update({
+                                    bank: bank,
+                                    major: major,
+                                    numbank: numbank,
+                                    namebank: namebank,
+
+                                    recipentid: data.data.id
+                                });
+                                checkbank();
+
+                            },
+                            error: function (data) {
+                                // $("#cross").modal();
+                                // storebike=[]
+                                console.log(data);
+
+                                alert("fail");
+                            }
+                        });
 
                     });
                     //showdetailshop()
@@ -977,14 +1012,14 @@ console.log(bankobject);
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-        
-}
+
+        }
 
 
 
                     // $("#elegantModalForm").modal();
 
-         
+
 
 
 
@@ -993,7 +1028,7 @@ console.log(bankobject);
 
 
                     // localStorage.clear();
-              
+
 
     </script>
 </body>

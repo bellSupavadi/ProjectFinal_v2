@@ -17,6 +17,7 @@
   <title>Document</title>
   
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
 
@@ -53,37 +54,37 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           
           <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="#">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">RENT</a>
-                  </li>
+             
             <li class="nav-item">
               <a class="nav-link" href="about.html">ABOUT</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#one">CONTACT</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" onclick="logout()">LOGOUT</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
       <section class="container-fluid">
           <!-- <div class="bg-image"> -->
          <!-- <div class="bg-text"> -->
+           
              <h1>MOTERCYCLE FOR RENT</h1>
               <p>" Once a year,go see someplace you'd never been before "</p>    
               <a href="" class="button" data-toggle="modal" data-target="#elegantModalForm">Rent Now!</a>
              
             <!-- </div> -->
       </section>
+      <!-- <section id="credit">
+          <p>Motorcycle For Rent</p>
+      
+        </section> -->
       <!-- Modal -->
       <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog" role="document" id="dialog">
         <!--Content-->
         <div class="modal-content form-elegant">
           <!--Header-->
@@ -135,7 +136,7 @@
                         </div>
             
                         <div class="text-center pt-2">
-                          <a class="btn btn-link text-primary" href="#">Forgot Your Password?</a>
+                          <a class="btn btn-link text-primary" href="forgotPassword.html">Forgot Your Password?</a>
                         </div>
                    
                     </div>
@@ -214,7 +215,7 @@
 
 var login = function() {
   
-  
+  let loadFinish = false
   var username = document.getElementById('email').value;
   var password = document.getElementById('password').value;
   firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
@@ -226,6 +227,17 @@ var login = function() {
   
   // ...
 });
+if (loadFinish) {
+                user.updatePassword(password).then(function () {
+                    // Update successful.
+
+                    // alert("เปลี่ยนรหัสผ่านเรียบร้อย")
+                }).catch(function (error) {
+                    // An error happened.
+                    console.log(error)
+                });
+
+            }
 
 };
  firebase.auth().onAuthStateChanged(function(user) {
@@ -295,5 +307,8 @@ function registerfirebase(id) {
 });
 }
 }
+
+
+
 </script>
   </html>
